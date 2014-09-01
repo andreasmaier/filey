@@ -47,7 +47,6 @@
     <orderEntry type="library" exported="" name="Gradle: aopalliance-1.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: slf4j-api-1.7.7" level="project" />
     <orderEntry type="library" exported="" name="Gradle: logback-core-1.1.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: unresolved_dependency___org_springframework_boot_spring_boot_test_1_1_5_RELEASE" level="project" />
   </component>
 </module>
 
