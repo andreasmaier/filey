@@ -4,6 +4,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.5.RELEASE")
+        classpath 'org.springframework:springloaded:1.2.0.RELEASE'
     }
 }
 
@@ -12,7 +13,14 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
-sourceCompatibility = 1.8
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
+    }
+}
+
+sourceCompatibility = 1.7
 version = '1.0'
 
 repositories {
@@ -22,6 +30,12 @@ repositories {
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web"
 
-    testCompile "org.springframework.boot:spring-boot-test"
+//    testCompile "org.springframework.boot:spring-boot-test"
     testCompile "junit:junit:4.11"
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.token.Application'
+    }
 }
