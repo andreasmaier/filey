@@ -4,3 +4,5 @@ create table authorities (
   constraint fk_authorities255_users foreign key(username) references users(username));
   create unique index ix_auth_username on authorities (username,authority
 );
+
+INSERT INTO authorities VALUES ('filey_admin', 'ROLE_ADMIN');
