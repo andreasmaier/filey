@@ -1,25 +1,21 @@
 package com.token.services;
 
-import com.google.common.collect.Lists;
-import com.token.models.SimpleUserDetails;
+import com.token.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class CustomUserDetailsService implements UserDetailsService{
     public static final String ROLE_USER = "USER";
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        List<UserDetails> details = Lists.newArrayList(new SimpleUserDetails("user", "user", ROLE_USER));
-
-        return details.stream()
-                .filter(d -> d.getUsername().equalsIgnoreCase(username))
-                .findFirst()
-                .orElse(null);
+        return userRepository.findOne(username);
     }
 }
