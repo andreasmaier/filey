@@ -1,5 +1,5 @@
 (function() {
-    var LoginController = function($scope, $rootScope, $location, $http, $cookieStore, LoginService, xAuthTokenHeaderName) {
+    var LoginController = function($scope, $rootScope, $location, $http, $cookieStore, xAuthTokenHeaderName) {
 
         $scope.login = function () {
             LoginService.authenticate($.param({username: $scope.username, password: $scope.password}), function (user) {

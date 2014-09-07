@@ -1,4 +1,4 @@
-angular.module('fileyApp', ['angularMoment', 'ngRoute', 'ngCookies', 'fileyApp.services'])
+angular.module('fileyApp', ['angularMoment', 'ngRoute', 'ngCookies', 'filey.services'])
     .config(['$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider) {
 
         $routeProvider.when('/login', {
@@ -6,9 +6,14 @@ angular.module('fileyApp', ['angularMoment', 'ngRoute', 'ngCookies', 'fileyApp.s
             controller: 'LoginController'
         });
 
+        $routeProvider.when('/signup', {
+            templateUrl: 'partials/signup.html',
+            controller: 'SignupController'
+        });
+
         $routeProvider.otherwise({
-            templateUrl: 'partials/home.html',
-            controller: 'HomeController'
+            templateUrl: 'partials/login.html',
+            controller: 'LoginController'
         });
 
         $locationProvider.hashPrefix('!');
@@ -41,7 +46,8 @@ angular.module('fileyApp', ['angularMoment', 'ngRoute', 'ngCookies', 'fileyApp.s
 
         $httpProvider.responseInterceptors.push(interceptor);
     } ]
-    ).run(function ($rootScope, $http, $location, $cookieStore, LoginService, xAuthTokenHeaderName) {
+    ).run(function ($rootScope, $http, $location, $cookieStore, xAuthTokenHeaderName) {
+
         $rootScope.$on('$viewContentLoaded', function() {
             delete $rootScope.error;
         });

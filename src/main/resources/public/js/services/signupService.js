@@ -1,13 +1,13 @@
 (function() {
-    var LoginService = function($resource) {
+    var SignupService = function($resource) {
         return $resource(':action', {}, {
             authenticate: {
                 method: 'POST',
-                params: {'action': 'authenticate'},
+                params: {'action': 'signup'},
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }
         });
     };
 
-    angular.module('filey.services', ['ngResource']).factory('LoginService', LoginService);
+    angular.module('filey.services', ['ngResource']).factory('SignupService', SignupService);
 })();
