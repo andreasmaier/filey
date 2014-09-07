@@ -3,12 +3,11 @@
         $scope.signup = function () {
             SignupService.signup($.param({username: $scope.username, password: $scope.password}),
                 function (response) {
-                    debugger;
                     $location.path('/login');
                 },
-                function () {
-                    debugger;
-                    $location.path('/login');
+                function (response) {
+                    // TODO: show errors
+                    $location.path('/signup');
                 });
         };
     };

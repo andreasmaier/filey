@@ -1,10 +1,13 @@
 (function() {
     var SignupService = function($resource) {
         return $resource(':action', {}, {
-            authenticate: {
+            signup: {
                 method: 'POST',
                 params: {'action': 'signup'},
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
             }
         });
     };

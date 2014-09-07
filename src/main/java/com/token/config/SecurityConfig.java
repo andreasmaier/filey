@@ -1,7 +1,7 @@
 package com.token.config;
 
 import com.token.helpers.XAuthTokenConfigurer;
-import com.token.services.CustomUserDetailsService;
+import com.token.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
         String[] restEndpointToSecure = { "home" };
         for( String endpoint : restEndpointToSecure ) {
-            http.authorizeRequests().antMatchers("/" + endpoint + "/**").hasRole(CustomUserDetailsService.ROLE_USER);
+            http.authorizeRequests().antMatchers("/" + endpoint + "/**").hasRole(UserService.ROLE_USER);
         }
 
         SecurityConfigurer<DefaultSecurityFilterChain, HttpSecurity> securityConfigurerAdapter = new XAuthTokenConfigurer(userDetailsServiceBean());

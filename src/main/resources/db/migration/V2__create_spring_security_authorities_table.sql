@@ -1,9 +1,8 @@
 create table authorities (
-  id integer not null primary key,
+  id serial primary key,
   username varchar(255) not null,
   authority varchar(255) not null,
-  constraint fk_authorities_users foreign key(username) references users(username));
-  create unique index ix_auth_username on authorities (username,authority
+  constraint fk_authorities_users foreign key(username) references users(username)
 );
 
-INSERT INTO authorities VALUES (1, 'filey_admin', 'ROLE_ADMIN');
+INSERT INTO authorities VALUES (0, 'filey_admin', 'ROLE_ADMIN');
